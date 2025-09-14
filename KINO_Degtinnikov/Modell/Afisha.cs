@@ -21,5 +21,12 @@ namespace KINO_Degtinnikov.Modell
             Time = Time;
             Price = Price;
         }
+        public Afisha( int IdKinoteatr, string Name, DateTime Time, int Price)
+        {
+            IdKinoteatr = IdKinoteatr;
+            Name = Name;
+            Time = Time;
+            Price = Price;
+        }
     }
 }

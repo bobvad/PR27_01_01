@@ -6,11 +6,12 @@ namespace KINO_Degtinnikov
     /// </summary>
     public partial class MainWindow : Window
     {
-        static MainWindow init;
+        public static MainWindow init;
         public MainWindow()
         {
             InitializeComponent();
-            frame.Navigate();
+            init = this;
+            frame.Navigate(new Pages.Kinoteatr.Add());
         }
     }
 }
