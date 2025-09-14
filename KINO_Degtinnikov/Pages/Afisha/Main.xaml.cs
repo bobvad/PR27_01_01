@@ -14,14 +14,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KINO_Degtinnikov.Pages.Kinoteatr
+namespace KINO_Degtinnikov.Pages.Afisha
 {
     /// <summary>
     /// Логика взаимодействия для Main.xaml
     /// </summary>
     public partial class Main : Page
     {
-        List<KinoteatrContext> AllKinoteatrs = KinoteatrContext.Select();
+        List<AfishaContext> AllKinoteatrs = AfishaContext.Select();
+        Main main;
         public Main()
         {
             InitializeComponent();
@@ -30,14 +31,14 @@ namespace KINO_Degtinnikov.Pages.Kinoteatr
         public void CreateUI()
         {
             parent.Children.Clear();
-            foreach (KinoteatrContext item in AllKinoteatrs)
+            foreach (AfishaContext item in AllKinoteatrs)
             {
-                parent.Children.Add(new Pages.Kinoteatr.Items.Item(item));
+                parent.Children.Add(new Pages.Afisha.Items.Item(item,main));
             }
         }
         private void Add(object sender, RoutedEventArgs e)
         {
-           MainWindow.init.frame.GoBack();
+            MainWindow.init.frame.GoBack();
         }
     }
 }

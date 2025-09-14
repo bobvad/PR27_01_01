@@ -6,12 +6,18 @@ namespace KINO_Degtinnikov.Classes
 {
     public class AfishaContext : Afisha
     {
+        private string text;
+        private DateTime fullDateTime;
+        private decimal priceValue;
+
         public AfishaContext(int Id, int IdKinoteatr, string Name, DateTime Time, int Price) : base(Id, IdKinoteatr, Name, Time, Price)
         {
         }
         public AfishaContext( int IdKinoteatr, string Name, DateTime Time, int Price) : base( IdKinoteatr, Name, Time, Price)
         {
         }
+
+
         public static List<AfishaContext> Select()
         {
             List<AfishaContext> AllKinoteatrs = new List<AfishaContext>();
