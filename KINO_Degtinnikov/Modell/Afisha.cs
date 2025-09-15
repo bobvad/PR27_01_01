@@ -1,32 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KINO_Degtinnikov.Modell
 {
     public class Afisha
-    {
+    { 
         public int Id { get; set; }
-        public int IdKinoteatr { get; set; }
         public string Name { get; set; }
-        public DateTime Time { get; set; }
-        public int Price { get; set; }
-        public Afisha(int Id, int IdKinoteatr, string Name, DateTime Time, int Price)
+        public int id_films { get; set; }
+        public DateTime time { get; set; }
+        public decimal price { get; set; }
+        public Afisha(int Id,string Name,int id_films,DateTime time, decimal price)
         {
-            Id = Id;
-            IdKinoteatr = IdKinoteatr;
-            Name = Name;
-            Time = Time;
-            Price = Price;
-        }
-        public Afisha( int IdKinoteatr, string Name, DateTime Time, int Price)
-        {
-            IdKinoteatr = IdKinoteatr;
-            Name = Name;
-            Time = Time;
-            Price = Price;
+            this.Id = Id;
+            this.Name = Name;
+            this.id_films = id_films;
+            this.time = time;
+            this.price = price;
         }
     }
 }

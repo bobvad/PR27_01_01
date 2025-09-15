@@ -63,6 +63,7 @@ namespace KINO_Degtinnikov.Pages.Kinoteatr
                 if (this.kinoteatr == null)
                 {
                     KinoteatrContext newKinoteatr = new KinoteatrContext(
+                        0,
                         name.Text,
                         Convert.ToInt32(count_zal.Text),
                         Convert.ToInt32(count.Text)
@@ -85,6 +86,16 @@ namespace KINO_Degtinnikov.Pages.Kinoteatr
             {
                 MessageBox.Show("Неправильный формат числовых значений");
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           MainWindow.init.frame.Navigate(new Pages.Kinoteatr.Main());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.frame.Navigate(new Pages.Glavnai());
         }
     }
 }

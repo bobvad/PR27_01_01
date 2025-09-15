@@ -14,9 +14,7 @@ namespace KINO_Degtinnikov.Classes
         public KinoteatrContext(int Id, string Name, int CountZal, int Count):base(Id,Name,CountZal,Count)
         {
         }
-        public KinoteatrContext( string Name, int CountZal, int Count) : base( Name, CountZal, Count)
-        {
-        }
+
         public static List<KinoteatrContext> Select()
         {
             List<KinoteatrContext> AllKinoteatrs = new List<KinoteatrContext>();
@@ -60,7 +58,7 @@ namespace KINO_Degtinnikov.Classes
                    $"`count_zal` = {this.CountZal}, " +
                    $"`count_mesto` = {this.Count} " +
                 "WHERE " +
-                   $"idFilms = {this.Id}";
+                   $"id = {this.Id}";
 
             MySqlConnection connection = Common.Connection.OpenConnection();
             Common.Connection.Query(SQL, connection);
@@ -68,7 +66,7 @@ namespace KINO_Degtinnikov.Classes
         }
         public void Delete()
         {
-            string SQL = $"DELETE FROM `Films` WHERE idFilms = {this.Id}";
+            string SQL = $"DELETE FROM `Films` WHERE id = {this.Id}";
             MySqlConnection connection = Common.Connection.OpenConnection();
             Common.Connection.Query(SQL, connection);
             Common.Connection.CloseConnection(connection);

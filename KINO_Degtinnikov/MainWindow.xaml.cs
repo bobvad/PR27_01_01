@@ -11,7 +11,7 @@ namespace KINO_Degtinnikov
         {
             InitializeComponent();
             init = this;
-            frame.Navigate(new Pages.Kinoteatr.Add());
+            frame.Navigate(new Pages.Glavnai());
         }
     }
 }

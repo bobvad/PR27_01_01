@@ -22,7 +22,7 @@
             <TextBox x:Name="name" Grid.Column="1" HorizontalAlignment="Center" Margin="0,116,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="255" Height="33" IsEnabled="False"/>
             <Button x:Name="bthDelete" Background="AntiqueWhite" Content="Удалить" HorizontalAlignment="Center" Margin="0,118,0,0" VerticalAlignment="Top" Height="31" Width="76" Click="Delete"/>
             <Button x:Name="bthUpdate" Foreground="White" Background="Orange" Content="Изменить" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Height="31" Width="76" Click="Update"/>
-            <DatePicker x:Name="Date" Grid.Column="2" HorizontalAlignment="Left" Margin="6,36,0,0" VerticalAlignment="Top" Height="30" Width="105"/>
+            <DatePicker x:Name="Date" Grid.Column="2" HorizontalAlignment="Left" Margin="6,36,0,0" VerticalAlignment="Top" Height="30" Width="105"  IsEnabled="False"/>
             <TextBox x:Name="Price" Grid.Column="2" HorizontalAlignment="Center" Margin="0,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Height="33" IsEnabled="False"/>
             <Label Grid.Column="2" Content="Стоимость" HorizontalAlignment="Left" Margin="8,86,0,0" VerticalAlignment="Top"/>
         </Grid>

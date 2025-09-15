@@ -22,98 +22,101 @@ namespace KINO_Degtinnikov.Pages.Afisha
     /// </summary>
     public partial class Add : Page
     {
-        List<AfishaContext> AllAfisha = AfishaContext.Select();
-        AfishaContext afisha;
-
+        List<KinoteatrContext> AllKinoteatrs = KinoteatrContext.Select(); 
+        AfishaContext currentAfisha; 
         public Add(AfishaContext afisha = null)
         {
             InitializeComponent();
-
-            foreach (var item in AllAfisha)
+            kinoteatrs.DisplayMemberPath = "Name";
+            foreach (var item in AllKinoteatrs)
                 kinoteatrs.Items.Add(item);
-
-            kinoteatrs.Items.Insert(0, "Выберите кинотеатр...");
-            kinoteatrs.SelectedIndex = 0;
-
             if (afisha != null)
             {
-                this.afisha = afisha;
-                int selectedIndex = AllAfisha.FindIndex(x => x.Id == afisha.Id);
-                kinoteatrs.SelectedIndex = selectedIndex + 1;
-
+                currentAfisha = afisha;
+                //kinoteatrs.SelectedItem = kinoteatrs.Items.Cast<KinoteatrContext>()
+                //                   .FirstOrDefault(k => k.Id == afisha.id_films);
+                kinoteatrs.SelectedIndex = AllKinoteatrs.FindIndex(x => x.Id == currentAfisha.id_films);
                 name.Text = afisha.Name;
-                Date.SelectedDate = afisha.Time.Date;
-                Time.Text = afisha.Time.ToString("HH:mm");
-                price.Text = afisha.Price.ToString();
+                Date.SelectedDate = afisha.time;
+                Time.Text = afisha.time.ToString("HH:mm:ss");
+                price.Text = afisha.price.ToString();
                 bthAdd.Content = "Изменить";
             }
+            else
+            {
+                kinoteatrs.SelectedIndex = -1; 
+            }
         }
-
         private void AddRecord(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(name.Text))
+                if (string.IsNullOrWhiteSpace(name.Text))
                 {
-                    MessageBox.Show("Необходимо указать наименование");
+                    MessageBox.Show("Необходимо ввести название.");
                     return;
                 }
-                if (kinoteatrs.SelectedIndex == 0)
+                if (kinoteatrs.SelectedItem == null)
                 {
-                    MessageBox.Show("Выберите кинотеатр");
+                    MessageBox.Show("Выберите кинотеатр.");
                     return;
                 }
                 if (Date.SelectedDate == null)
                 {
-                    MessageBox.Show("Необходимо указать дату");
+                    MessageBox.Show("Укажите дату.");
                     return;
                 }
-                if (string.IsNullOrEmpty(Time.Text))
+                if (string.IsNullOrWhiteSpace(Time.Text))
                 {
-                    MessageBox.Show("Необходимо указать время");
+                    MessageBox.Show("Укажите время.");
                     return;
                 }
-                if (string.IsNullOrEmpty(price.Text) || !int.TryParse(price.Text, out int priceValue)) // Исправлено на int
+                if (string.IsNullOrWhiteSpace(price.Text) || !decimal.TryParse(price.Text, out decimal priceValue))
                 {
-                    MessageBox.Show("Необходимо указать корректную стоимость");
+                    MessageBox.Show("Некорректная цена.");
                     return;
                 }
-
                 if (!TimeSpan.TryParse(Time.Text, out TimeSpan time))
                 {
-                    MessageBox.Show("Неверный формат времени");
+                    MessageBox.Show("Неверный формат времени.");
                     return;
                 }
 
                 DateTime fullDateTime = Date.SelectedDate.Value.Date + time;
+                var selectedKinoteatr = kinoteatrs.SelectedItem as KinoteatrContext;
 
-                if (this.afisha == null)
+                if (currentAfisha == null)
                 {
                     AfishaContext newAfisha = new AfishaContext(
-                        (kinoteatrs.SelectedItem as KinoteatrContext).Id,
-                        name.Text,
-                        fullDateTime,
-                        priceValue 
+                       0,                     
+                       name.Text,              
+                       selectedKinoteatr.Id,  
+                       fullDateTime,         
+                       priceValue             
                     );
                     newAfisha.Add();
-                    MessageBox.Show("Запись успешно добавлена");
+                    MessageBox.Show("Новая запись успешно добавлена!");
                 }
                 else
                 {
-                    this.afisha.IdKinoteatr = (kinoteatrs.SelectedItem as KinoteatrContext).Id;
-                    this.afisha.Name = name.Text;
-                    this.afisha.Time = fullDateTime;
-                    this.afisha.Price = priceValue; 
-                    this.afisha.Update();
-                    MessageBox.Show("Запись успешно обновлена");
+                    currentAfisha.Name = name.Text;
+                    currentAfisha.id_films = selectedKinoteatr.Id;
+                    currentAfisha.time = fullDateTime;
+                    currentAfisha.price = priceValue;
+                    currentAfisha.Update();
+                    MessageBox.Show("Запись успешно обновлена!");
                 }
 
                 MainWindow.init.frame.Navigate(new Main());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.frame.Navigate(new Pages.Afisha.Main());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.frame.Navigate(new Pages.Glavnai());
         }
     }
 }

@@ -134,6 +134,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Glavnai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Kinoteatr\Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +162,9 @@
     </Compile>
     <Compile Include="Pages\Afisha\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Glavnai.xaml.cs">
+      <DependentUpon>Glavnai.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Kinoteatr\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>

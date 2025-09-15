@@ -23,6 +23,8 @@
             <TextBox x:Name="count_zal" Grid.Column="2" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="306" Height="33"/>
             <TextBox x:Name="count" Grid.Column="1" HorizontalAlignment="Center" Margin="0,116,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="306" Height="33"/>
             <Button x:Name="bthAdd" Grid.Column="2" Background="AntiqueWhite" Content="Добавить" HorizontalAlignment="Left" Margin="212,116,0,0" VerticalAlignment="Top" Height="26" Width="98" Click="AddRecord"/>
+            <Button Grid.Column="2" Content="Просмотр карточек" HorizontalAlignment="Left" Margin="82,116,0,0" VerticalAlignment="Top" Height="26" Width="126" Click="Button_Click"/>
+            <Button Grid.Column="2" Content="На главную страничку" HorizontalAlignment="Left" Margin="81,145,0,0" VerticalAlignment="Top" Width="127" Height="21" Click="Button_Click_1" />
         </Grid>
     </Grid>
 </Page>

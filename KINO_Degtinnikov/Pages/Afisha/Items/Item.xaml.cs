@@ -23,26 +23,31 @@ namespace KINO_Degtinnikov.Pages.Afisha.Items
     public partial class Item : UserControl
     {
         List<AfishaContext> AllKinoteatrs = AfishaContext.Select();
-        AfishaContext item;
+        List<KinoteatrContext> All = KinoteatrContext.Select(); 
+        AfishaContext items;
         public Item(AfishaContext item, Main main)
         {
             InitializeComponent();
-            kinoteatr.Text = AllKinoteatrs.Find(x => x.Id == item.IdKinoteatr).Name;
-            name.Text = item.Name;
-            Date.Text = item.Time.ToString("yyyy-MM-dd");
-            time.Text = item.Time.ToString("HH:mm");
-            Price.Text = item.Price.ToString();
-        }
 
+            var allKinoteatrs = KinoteatrContext.Select();
+
+            var selectedKinoteatr = allKinoteatrs.FirstOrDefault(k => k.Id == item.id_films);
+
+            kinoteatr.Text = selectedKinoteatr?.Name ?? "Неизвестный кинотеатр";
+            name.Text = item.Name;
+            Date.Text = item.time.ToString("yyyy-MM-dd");
+            time.Text = item.time.ToString("HH:mm");
+            Price.Text = item.price.ToString();
+        }
         private void Update(object sender, RoutedEventArgs e)
         {
-            MainWindow.init.frame.Navigate(new Add(this.item));
+            MainWindow.init.frame.Navigate(new Add(this.items));
         }
         private void Delete(object sender, RoutedEventArgs e)
         {
             try
             {
-               item.Delete();
+               items.Delete();
                 MessageBox.Show("Запись успешно удалена");
                 if (Parent is Panel parentPanel)
                 {

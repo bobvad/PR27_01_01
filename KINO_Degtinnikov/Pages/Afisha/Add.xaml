@@ -11,21 +11,30 @@
     <Grid Background="Gainsboro">
         <Grid Margin="28" Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100px"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Image Source="/Images/pngtree-movie-film-simple-blue-background-image_901044.jpg" Width="57" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,6,0,0"/>
             <Label Grid.Column="1" Content="Кинотеатр" HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Width="101"/>
             <Label Grid.Column="1" Content="Наименование" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="112"/>
             <Label Grid.Column="2" Content="Дата" HorizontalAlignment="Left" Margin="8,6,0,0" VerticalAlignment="Top" Width="143"/>
-            <TextBox x:Name="name" Grid.Column="1" HorizontalAlignment="Center" Margin="0,116,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="306" Height="33"/>
-            <Button x:Name="bthAdd" Grid.Column="2" Background="AntiqueWhite" Content="Добавить" HorizontalAlignment="Left" Margin="217,165,0,0" VerticalAlignment="Top" Height="34" Width="98" Click="AddRecord"/>
-            <ComboBox x:Name="kinoteatrs"  Grid.Column="1" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="301" Height="29"/>
+            <TextBox x:Name="name" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,116,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="Auto" Height="33"/>
+            <Button x:Name="bthAdd" Grid.Column="2" Background="AntiqueWhite" Content="Добавить" HorizontalAlignment="Left" Margin="176,215,0,0" VerticalAlignment="Top" Height="34" Width="98" Click="AddRecord"/>
+            <ComboBox x:Name="kinoteatrs"  Grid.Column="1" HorizontalAlignment="Stretch" Margin="12,36,0,0" VerticalAlignment="Top" Width="Auto" Height="29"/>
             <TextBox x:Name="price" Grid.Column="2" HorizontalAlignment="Left" Margin="10,116,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="306" Height="33"/>
             <Label Grid.Column="2" Content="Стоимость:" HorizontalAlignment="Left" Margin="8,85,0,0" VerticalAlignment="Top" Width="75"/>
             <DatePicker x:Name="Date" Grid.Column="2" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Height="26" Width="134"/>
             <TextBox x:Name="Time" Grid.Column="2" HorizontalAlignment="Left" Margin="153,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Height="24"/>
+            <Button Grid.Column="2" Content="Просмотр карточек" HorizontalAlignment="Left" Margin="187,155,0,0" VerticalAlignment="Top" Width="128" Height="45" Click="Button_Click"/>
+            <Button Grid.Column="2" Content="На главную страницу" HorizontalAlignment="Left" Margin="50,155,0,0" VerticalAlignment="Top" Width="130" Height="43" Click="Button_Click_1"/>
         </Grid>
     </Grid>
 </Page>
